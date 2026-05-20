@@ -4,7 +4,7 @@ import { BaileysProvider as Provider } from '@builderbot/provider-baileys'
 
 const PORT = process.env.PORT ?? 3008
 
-import allFlows from './flows/index.js';
+import allFlows from './flows/nat.js';
 
 const main = async () => {
 
