@@ -1,0 +1,5 @@
+¡Hola! 😊 Vamos a agendar tu cita con el Dr. Gerardo.
+
+¿Cuál es tu nombre completo?
+
+_(Escribe *0* o *menú* para volver al menú principal)_

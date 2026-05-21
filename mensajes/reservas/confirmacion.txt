@@ -1,0 +1,7 @@
+✅ ¡Perfecto! Aquí está el resumen de tu cita:
+
+👤 *Nombre:* {nombre}
+📋 *Procedimiento:* {procedimiento}
+📅 *Fecha y hora:* {fechaTexto}
+
+¿Confirmas tu cita? Responde *sí* o *no*.

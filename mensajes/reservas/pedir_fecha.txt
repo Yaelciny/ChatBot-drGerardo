@@ -1,0 +1,6 @@
+Perfecto 👍 Ahora dime, ¿qué fecha y hora te gustaría para tu cita?
+
+Puedes escribirlo de forma natural, por ejemplo:
+• _"El viernes a las 10am"_
+• _"Mañana a las 3 de la tarde"_
+• _"El 5 de junio a las 11:00"_

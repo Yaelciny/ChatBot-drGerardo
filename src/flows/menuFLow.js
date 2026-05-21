@@ -3,6 +3,7 @@ import fs from 'fs';
 import { addKeyword } from '@builderbot/bot';
 import { flowInfoGeneral } from './infoGeneralFlow.js';
 import { flowConsulta } from './consultasFLow.js';
+import { flowReservas } from './reservasFlow.js';
 
 const menuPath = path.join(process.cwd(), 'mensajes', 'menu', 'menu.txt')
 const menu = fs.readFileSync(menuPath, 'utf-8')
@@ -21,8 +22,7 @@ export const menuFlow = addKeyword(['menu', 'menú', 'Menu'])
                     return gotoFlow(flowInfoGeneral);
                     break
                 case "2":
-                    // return gotoFlow(flowReservar);
-                    break
+                    return gotoFlow(flowReservas);
                 case "3":
                     return gotoFlow(flowConsulta);
                     break

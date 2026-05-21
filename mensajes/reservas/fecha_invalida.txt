@@ -1,0 +1,7 @@
+No pude entender bien la fecha o la hora. 😅
+
+Por favor intenta de nuevo con un formato más claro, por ejemplo:
+• _"El lunes 2 de junio a las 10am"_
+• _"Mañana a las 4 de la tarde"_
+
+¿Qué fecha y hora te gustaría?

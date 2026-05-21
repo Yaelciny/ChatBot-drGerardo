@@ -1,0 +1,9 @@
+🎉 ¡Tu cita ha sido registrada con éxito!
+
+👤 *Nombre:* {nombre}
+📋 *Procedimiento:* {procedimiento}
+📅 *Fecha y hora:* {fechaTexto}
+
+Te esperamos. Si necesitas cancelar o reagendar, no dudes en contactarnos. 😊
+
+Escribe *menú* para volver al menú principal.
