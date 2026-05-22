@@ -12,7 +12,7 @@ export const menuFlow = addKeyword(['menu', 'menú', 'Menu'])
     .addAnswer(
         menu,
         { capture: true },
-        async (ctx, { gotoFlow, flowDynamic }) => {
+        async (ctx, { gotoFlow, flowDynamic, fallBack }) => {
             // Validación con comillas simples
             if (!['1', '2', '3', '0'].includes(ctx.body)) {
                 return fallBack('Respuesta no válida, por favor selecciona una de las opciones.');
