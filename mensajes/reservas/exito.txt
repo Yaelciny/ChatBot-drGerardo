@@ -4,6 +4,6 @@
 📋 *Procedimiento:* {procedimiento}
 📅 *Fecha y hora:* {fechaTexto}
 
-Te esperamos. Si necesitas cancelar o reagendar, no dudes en contactarnos. 😊
+Te esperamos 😊
 
 Escribe *menú* para volver al menú principal.

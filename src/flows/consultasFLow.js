@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { addKeyword, EVENTS } from '@builderbot/bot';
 import chat from '../chatGpt/chatGpt.js'
+import { sendSafe } from '../utils/antiBan.js';
 
 const saludoPath = path.join(process.cwd(), 'mensajes', 'consultas', 'saludo.txt')
 const saludo = fs.readFileSync(saludoPath, 'utf-8')
@@ -25,7 +26,7 @@ export const flowConsulta = addKeyword(EVENTS.ACTION)
             // funcion de chatgpt
             const answer = await chat(prompt, ctx.body);
 
-            await ctxFn.flowDynamic(answer);
+            await sendSafe(ctxFn.flowDynamic, answer, ctx.from);
 
             // Metemos el texto de salida en el fallback
             // para que no regrese al saludo

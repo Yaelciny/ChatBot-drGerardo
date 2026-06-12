@@ -3,6 +3,7 @@ import fs from 'fs';
 import { addKeyword, EVENTS } from '@builderbot/bot';
 import { text2iso, iso2text } from '../calendarService/utils.js';
 import { isDateAvailable, createEvent, getNextAvailableSlot } from '../calendarService/calendarService.js';
+import { sendSafe, humanDelay, sleep } from '../utils/antiBan.js';
 
 // ── Mensajes ─────────────────────────────────────────────────────────────────
 const confirmacionPath = path.join(process.cwd(), 'mensajes', 'reservas', 'confirmacion.txt');
@@ -90,6 +91,9 @@ export const flowReservas = addKeyword(EVENTS.ACTION)
                 return fallBack(`${slotNoDisponible}${sugerencia}`);
             }
 
+            // ── Anti-ban: pequeña pausa antes de enviar el resumen ───────────
+            await sleep(600 + Math.random() * 400);
+
             // Guardar fecha validada en el estado de la conversación
             const fechaTexto = iso2text(isoFecha);
             await state.update({ fechaISO: isoFecha, fechaTexto });
@@ -101,7 +105,7 @@ export const flowReservas = addKeyword(EVENTS.ACTION)
                 .replace('{procedimiento}', procedimiento)
                 .replace('{fechaTexto}', fechaTexto);
 
-            await flowDynamic(resumen);
+            await sendSafe(flowDynamic, resumen, ctx.from);
         }
     )
 
@@ -114,7 +118,7 @@ export const flowReservas = addKeyword(EVENTS.ACTION)
 
             // Si por alguna razón perdemos el estado, salimos
             if (!procedimiento || !fechaISO) {
-                await flowDynamic('Ocurrió un error. Por favor escribe *menú* e inténtalo de nuevo.');
+                await sendSafe(flowDynamic, 'Ocurrió un error. Por favor escribe *menú* e inténtalo de nuevo.', ctx.from);
                 return;
             }
 
@@ -122,7 +126,7 @@ export const flowReservas = addKeyword(EVENTS.ACTION)
             const respuesta = ctx.body.trim().toLowerCase();
 
             if (!['si', 'sí', 's', 'yes', '1'].includes(respuesta)) {
-                await flowDynamic('❌ Cita cancelada. Escribe *menú* para volver al menú principal.');
+                await sendSafe(flowDynamic, '❌ Cita cancelada. Escribe *menú* para volver al menú principal.', ctx.from);
                 return;
             }
 
@@ -138,9 +142,9 @@ export const flowReservas = addKeyword(EVENTS.ACTION)
                     .replace('{nombre}', nombre || ctx.name)
                     .replace('{procedimiento}', procedimiento)
                     .replace('{fechaTexto}', fechaTexto);
-                await flowDynamic(mensajeExito);
+                await sendSafe(flowDynamic, mensajeExito, ctx.from);
             } else {
-                await flowDynamic(error);
+                await sendSafe(flowDynamic, error, ctx.from);
             }
         }
     );
